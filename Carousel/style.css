@@ -1,0 +1,226 @@
+body {
+    margin: 0;
+    background-color: black;
+}
+
+:root{
+    --item-width: 20vw;
+}
+
+@font-face {
+    font-family: sansation;
+    src: url(./Sansation_Regular.ttf);
+}
+
+.metrophobic-regular {
+    font-family: "Metrophobic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+
+.wrapper {
+    position: relative;
+}
+
+.button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    top: 48%;
+    height: clamp( 30px, calc(0.15 * var(--item-width)), 72px);
+    width:  clamp( 30px, calc(0.15 * var(--item-width)), 72px);
+    border-radius: 50%;
+    border: 0;
+    background-color: rgba(207, 207, 207, 0.3);
+    padding: 0;
+    display: none;
+}
+
+.button div {
+    height: 80%;
+}
+
+.button div img {
+    height: 100%;
+    fill: #fefefed0;
+}
+
+.button-previous {
+    left: 1vh;
+}
+
+.button-next {
+    right: 1vh;
+}
+
+.button-next img {
+    transform: rotate(180deg);
+}
+
+.list {
+    display: flex;
+    padding: 16px;
+  
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    /* mask-image: linear-gradient(to right, rgb(0, 0, 0, 0) 0%, rgba(205, 205, 205) 20%, rgba(205, 205, 205) 80%, rgb(0, 0, 0, 0) 100%);
+    mask-mode: alpha;
+     */
+}
+  
+.item {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 0;
+    
+    padding: 0 0 0 clamp( 10px, calc(0.05 * var(--item-width)), 24px);
+    scroll-snap-align: center;
+}
+
+.content {
+    width: clamp(200px, var(--item-width), 480px);
+    height: clamp(300px, calc(1.5 * var(--item-width)), 720px);
+    border-radius: clamp( 10px, calc(0.05 * var(--item-width)), 24px);
+    background-color: rgb(188, 188, 188);
+    overflow: hidden;
+    position: relative;
+}
+
+.content img {
+   height: 100%;
+   object-fit: cover;
+}
+
+.item-info {
+    display: grid;
+    grid-template-rows: 1.5fr 2fr;
+    position: absolute;
+    z-index: 1;
+    width: 67%;
+    height: 3.5em;
+    left: clamp(10px, calc(0.05 * var(--item-width)), 24px);
+    bottom: clamp(10px, calc(0.05 * var(--item-width)), 24px);
+    padding-bottom: 5px;
+}
+
+.gradiant {
+    position: absolute;
+    width: 100%;
+    border-bottom-left-radius: clamp( 10px, calc(0.05 * var(--item-width)), 24px);
+    border-bottom-right-radius: clamp( 10px, calc(0.05 * var(--item-width)), 24px);
+    height: 200%;
+    background-image: linear-gradient(
+        rgb(51, 51, 51, 0) 0%,
+        rgb(51, 51, 51, 0.019) 50%,
+        rgb(51, 51, 51, 0.037) 65%,
+        rgb(51, 51, 51, 0.075) 75.5%,
+        rgb(51, 51, 51, 0.15) 82.85%,
+        rgb(51, 51, 51, 0.3) 88%,
+        rgb(51, 51, 51, 1) 100%
+        );
+    left: 0;
+    bottom: 0;
+}
+
+.description {
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.content div h2 {
+    font-size: 1.2em;
+    color: #FFF;
+    font-family: sansation;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.content div p {
+    font-family: "Metrophobic";
+    font-size: 0.8em;
+    color: #d3d3d3;
+    padding: 0;
+    margin: 0;
+}
+
+.content  div button {
+    position: absolute;
+    bottom: clamp(10px, calc(0.05 * var(--item-width)), 24px);
+    right: clamp(10px, calc(0.05 * var(--item-width)), 24px);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    height: clamp(32px, calc(0.16 * var(--item-width)), 57.6px);
+    width: clamp(32px, calc(0.16 * var(--item-width)), 57.6px);
+    border: 0;
+    border-radius: clamp(8px, calc(0.04 * var(--item-width)), 19.2px);
+    padding: 0;
+}
+
+.content  div button img:hover {
+    transform: scale(1.1);
+}
+
+.content  div button img {
+    height: 50%;
+    width: 50%;
+    transition: 0.1s;
+}
+
+.title {
+    font-family: sansation;
+    padding-left: clamp( 10px, calc(0.05 * var(--item-width)), 24px);
+    text-transform: uppercase;
+    color: #5271FF;
+}
+
+@media (pointer:fine) {
+    .button {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .content div {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .item-info div h2 {
+        font-size: 1em;
+    }
+
+    .item-info p {
+        display: none;
+    }
+
+    .item-info div {
+        height: fit-content;
+        margin: 0;
+    }
+
+    .item-info {
+        height: 32px;
+        padding: 0;
+    }
+
+    .button-previous {
+        left: 3vh;
+    }
+
+    .button-next {
+        right: 3vh;
+    }
+}
